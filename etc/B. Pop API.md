@@ -92,7 +92,7 @@ LED 제어 클래스
 
 초음파 센서 클래스
 
-- `Ultrasonic.read()` : AutoCar 전체 부착된 초음파 센서 값 불러옴
+- `Ultrasonic.read()` : AutoCar 전체 부착된 초음파 센서 값 읽기
   - ex) (84,100)
 
 ## Class Imu
