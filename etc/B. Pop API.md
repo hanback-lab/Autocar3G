@@ -118,5 +118,40 @@ Imu 센서 클래스
 - `Camera.start()` : 원격 카메라 클라이언트 동작 실행.  
 - `Camera.read()` : 현재 카메라 이미지(np.ndarray 타입) 출력. 클라이언트 동작 미실행 (`start` 함수 미호출) 및 연결 오류 시 `None` 반환
 
+## Class AI
 
+AI 클래스
+
+### AI.Object_Follow
+
+ultralytics yolov8 객체 탐지 AI 추상화 클래스
+
+- `Object_Follow.__init__(camera: Camera)` : 객체 탐지 클래스 생성
+  - 카메라 인스턴스 생성 후 파라미터로 전달
+- `Object_Follow.load_model(path: str)` : yolov8 모델 로드
+  - yolov8 모델 경로 파라미터로 전달
+- `Object_Follow.detect(image: object = None)` (List[Dict]) : 객체 추론 후 결과 반환
+  - `np.ndarray` 이미지 파라미터로 전달.
+  - 파라미터 미전달 시 인스턴스 생성 시에 받았던 카메라 데이터 자동으로 구한 후 전달됨
+  - Return List[(key:value)]
+    - 'index' : 감지된 객체의 인덱스 (classes.txt 참조)
+    - 'label' : 감지된 객체의 지정 이름 (classes.txt 참조)
+    - 'x' : 감지된 객체의 2차원 이미지 상 x 위치 값
+    - 'y' : 감지된 객체의 2차원 이미지 상 y 위치 값
+    - 'size_rate' : 감지된 객체의 객체 사이즈
+
+### AI.Track_Follow_TF
+
+Resnet 차선 감지 AI 추상화 클래스
+
+- `Track_Follow_TF.__init__(camera: Camera)` : 차선 탐지 클래스 생성
+  - 카메라 인스턴스 생성 후 파라미터로 전달
+- `Track_Follow_TF.load_model(path: str)` : Resnet(h5) 모델 로드
+  - Resnet(h5) 모델 경로 파라미터로 전달
+- `Track_Follow_TF.run(value: object = None)` [Dict] : 차선 추론 후 결과 반환화
+  - `np.ndarray` 이미지 파라미터로 전달.
+  - 파라미터 미전달 시 인스턴스 생성 시에 받았던 카메라 데이터 자동으로 구한 후 전달됨
+  - Return (key:value)
+    - 'x' : 감지된 객체의 2차원 이미지 상 x 위치 값
+    - 'y' : 감지된 객체의 2차원 이미지 상 y 위치 값
 
