@@ -148,7 +148,7 @@ Resnet 차선 감지 AI 추상화 클래스
   - 카메라 인스턴스 생성 후 파라미터로 전달
 - `Track_Follow_TF.load_model(path: str)` : Resnet(h5) 모델 로드
   - Resnet(h5) 모델 경로 파라미터로 전달
-- `Track_Follow_TF.run(value: object = None)` [Dict] : 차선 추론 후 결과 반환화
+- `Track_Follow_TF.run(value: object = None)` (Dict) : 차선 추론 후 결과 반환화
   - `np.ndarray` 이미지 파라미터로 전달.
   - 파라미터 미전달 시 인스턴스 생성 시에 받았던 카메라 데이터 자동으로 구한 후 전달됨
   - Return (key:value)
